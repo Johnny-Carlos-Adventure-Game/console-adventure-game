@@ -18,7 +18,7 @@ public class AdventureGame {
     }
 
     public static void gameInit(String playerName, Scanner playerInput) {
-        cadet(50);
+        int cadetHP = cadet(50);
         String boardPosition = "C3";
 
         System.out.print("\nWelcome to SpaceForce, cadet! There's a seismic disturbance on the moon, and we need you, " + playerName + ", to investigate... You've just landed on the moon, and you are standing outside your ship. Time to explore... [W: Up][A: Left][S: Down][D: Right] ");
@@ -39,7 +39,7 @@ public class AdventureGame {
                 break;
             case "D":
                 boardPosition = "C4";
-                spaceBug(boardPosition, playerInput);
+                spaceBugBattle(cadetHP, boardPosition, playerInput);
                 break;
         }
     }
@@ -60,34 +60,99 @@ public class AdventureGame {
         return hp;
     }
 
-    public static void spaceBug(int cadetHP, String boardPosition, Scanner playerInput) {
-        int bugHP = 10;
+    public static void spaceBugBattle(int cadetHP, String boardPosition, Scanner playerInput) {
+        System.out.print("You have encountered a Space Bug!");
 
         switch(boardPosition) {
             case "C4":
+                int bugHP = 10;
+
                 do {
-                    System.out.print("You have encountered a Space Bug! [Z: Attack][X: Heal][Z: Defend]");
+                    System.out.print("[Z: Attack][X: Heal][C: Defend] ");
                     String option = playerInput.next();
+
+                    System.out.println("Cadet HP: " + cadetHP);
+                    System.out.println("Space Bug HP: " + bugHP);
 
                     switch (option.toUpperCase()) {
                         case "Z":
-                            bugHP -= sixSidedDie();
-                            cadetHP -= sixSidedDie();
+                            int cadetAttack = sixSidedDie();
+                            int bugAttack = sixSidedDie();
+
+                            System.out.println("You roll a 6-sided die and deal " + cadetAttack + " damage!");
+                            System.out.println("The Space Bug deals " + bugAttack + " damage!");
+
+                            bugHP -= cadetAttack;
+                            cadetHP -= bugAttack;
+
+                            if(cadetHP < 0) {
+                                System.out.println("Cadet HP: 0");
+                                cadetHP = 0;
+                            } else {
+                                System.out.println("Cadet HP: " + cadetHP);
+                            }
+
+                            if(bugHP < 0) {
+                                System.out.println("Space Bug HP: 0");
+                                bugHP = 0;
+                            } else {
+                                System.out.println("Space Bug HP: " + bugHP);
+                            }
                             break;
                         case "X":
                             if (cadetHP < 50) {
-                                cadetHP += fourSidedDie();
+                                int cadetHeal = fourSidedDie();
+                                System.out.println("You roll a 4-sided die and heal " + cadetHeal + "HP!");
+
+                                cadetHP += cadetHeal;
+
+                                if(cadetHP < 0) {
+                                    System.out.println("Cadet HP: 0");
+                                    cadetHP = 0;
+                                } else {
+                                    System.out.println("Cadet HP: " + cadetHP);
+                                }
+
+                                if(bugHP < 0) {
+                                    System.out.println("Space Bug HP: 0");
+                                    bugHP = 0;
+                                } else {
+                                    System.out.println("Space Bug HP: " + bugHP);
+                                }
                             }
                             break;
                         case "C":
-                            cadetHP -= (sixSidedDie() / 2);
+                            int cadetDefend = (sixSidedDie() / 2);
+                            System.out.println("You roll a 6-sided die to block the Space Bug's attack. He deals " + cadetDefend + " damage!");
+
+                            cadetHP -= cadetDefend;
+
+                            if(cadetHP < 0) {
+                                System.out.println("Cadet HP: 0");
+                                cadetHP = 0;
+                            } else {
+                                System.out.println("Cadet HP: " + cadetHP);
+                            }
+
+                            if(bugHP < 0) {
+                                System.out.println("Space Bug HP: 0");
+                                bugHP = 0;
+                            } else {
+                                System.out.println("Space Bug HP: " + bugHP);
+                            }
                             break;
                     }
-                } while(bugHP > 0 || cadetHP > 0);
+
+                    if(bugHP <= 0 || cadetHP <= 0) {
+                        break;
+                    }
+                } while(true);
 
                 if(bugHP == 0) {
                     System.out.print("Congratulation! You have defeated the Space Bug! [W: Up][S: Down][D: Right]");
                     String direction = playerInput.next();
+
+                    cadet(cadetHP);
 
                     switch(direction.toUpperCase()) {
                         case "W":
