@@ -35,7 +35,7 @@ public class AdventureGame {
                 break;
             case "S":
                 boardPosition = "D3";
-                spaceSnakeBattle(cadetHp,boardPosition, playerInput);
+                spaceSnakeBattle(cadetHP, boardPosition, playerInput);
                 break;
             case "D":
                 boardPosition = "C4";
@@ -64,10 +64,11 @@ public class AdventureGame {
 
     public static void spaceBugBattle(int cadetHP, String boardPosition, Scanner playerInput) {
         System.out.print("You have encountered a Space Bug!");
+        int bugHP;
 
         switch(boardPosition) {
             case "C4":
-                int bugHP = 10;
+                bugHP = 10;
 
                 do {
                     System.out.print("[Z: Attack][X: Heal][C: Defend] ");
@@ -172,7 +173,7 @@ public class AdventureGame {
                 }
                 break;
             case "A1":
-                int bugHP = 10;
+                bugHP = 10;
 
                 do {
                     System.out.print("[Z: Attack][X: Heal][C: Defend] ");
@@ -274,7 +275,7 @@ public class AdventureGame {
                 }
                 break;
             case "A5":
-                int bugHP = 10;
+                bugHP = 10;
 
                 do {
                     System.out.print("[Z: Attack][X: Heal][C: Defend] ");
@@ -376,7 +377,7 @@ public class AdventureGame {
                 }
                 break;
             case "E2":
-                int bugHP = 10;
+                bugHP = 10;
 
                 do {
                     System.out.print("[Z: Attack][X: Heal][C: Defend] ");
@@ -490,10 +491,11 @@ public class AdventureGame {
 
     public static void spaceSnakeBattle(int cadetHP, String boardPosition, Scanner playerInput) {
         System.out.print("You have encountered a Space Snake!");
+        int snakeHP;
 
         switch(boardPosition) {
             case "A3":
-                int snakeHP = 25;
+                snakeHP = 25;
 
                 do {
                     System.out.print("[Z: Attack][X: Heal][C: Defend] ");
@@ -598,7 +600,7 @@ public class AdventureGame {
                 }
                 break;
             case "D3":
-                int snakeHP = 25;
+                snakeHP = 25;
 
                 do {
                     System.out.print("[Z: Attack][X: Heal][C: Defend] ");
@@ -714,10 +716,12 @@ public class AdventureGame {
     }
 
     public static void spaceEmpty(String boardPosition, Scanner playerInput) {
+        String direction;
+
         switch(boardPosition) {
             case "B3":
                 System.out.println("\nIt's empty. Keep exploring... [W: Up][A: Left][D: Right] ");
-                String direction = playerInput.next();
+                direction = playerInput.next();
 
                 switch(direction.toUpperCase()) {
                     case "W":
@@ -733,7 +737,7 @@ public class AdventureGame {
                 break;
             case "D4":
                 System.out.println("\nIt's empty. Keep exploring... [W: Up][A: Left] [S: Down] [D: Right] ");
-                String direction = playerInput.next();
+                direction = playerInput.next();
 
                 switch(direction.toUpperCase()) {
                     case "W":
@@ -744,7 +748,7 @@ public class AdventureGame {
                         break;
                     case "S":
                         boardPosition = "E4";
-                        break
+                        break;
                     case "D":
                         boardPosition = "D5";
                         break;
@@ -753,7 +757,7 @@ public class AdventureGame {
                 break;
             case "D2":
                 System.out.println("\nIt's empty. Keep exploring... [W: Up][A: Left] [S: Down] [D: Right] ");
-                String direction = playerInput.next();
+                direction = playerInput.next();
 
                 switch(direction.toUpperCase()) {
                     case "W":
@@ -764,7 +768,7 @@ public class AdventureGame {
                         break;
                     case "S":
                         boardPosition = "E2";
-                        break
+                        break;
                     case "D":
                         boardPosition = "D3";
                         break;
@@ -772,7 +776,7 @@ public class AdventureGame {
                 break;
             case "B2":
                 System.out.println("\nIt's empty. Keep exploring... [W: Up][A: Left] [S: Down] [D: Right] ");
-                String direction = playerInput.next();
+                direction = playerInput.next();
 
                 switch(direction.toUpperCase()) {
                     case "W":
@@ -783,7 +787,7 @@ public class AdventureGame {
                         break;
                     case "S":
                         boardPosition = "C2";
-                        break
+                        break;
                     case "D":
                         boardPosition = "B3";
                         break;
@@ -791,7 +795,7 @@ public class AdventureGame {
                 break;
             case "A4":
                 System.out.println("\nIt's empty. Keep exploring... [A: Left] [S: Down] [D: Right] ");
-                String direction = playerInput.next();
+                direction = playerInput.next();
 
                 switch(direction.toUpperCase()) {
                     case "A":
@@ -799,7 +803,7 @@ public class AdventureGame {
                         break;
                     case "S":
                         boardPosition = "B4";
-                        break
+                        break;
                     case "D":
                         boardPosition = "A5";
                         break;
@@ -807,7 +811,7 @@ public class AdventureGame {
                 break;
             case "B5":
                 System.out.println("\nIt's empty. Keep exploring... [W: Up] [A: Left] [S: Down]");
-                String direction = playerInput.next();
+                direction = playerInput.next();
 
                 switch(direction.toUpperCase()) {
                     case "W":
@@ -822,7 +826,7 @@ public class AdventureGame {
                 break;
             case "D5":
                 System.out.println("\nIt's empty. Keep exploring... [W: Up] [A: Left] [S: Down]");
-                String direction = playerInput.next();
+                direction = playerInput.next();
 
                 switch(direction.toUpperCase()) {
                     case "W":
@@ -833,11 +837,11 @@ public class AdventureGame {
                         break;
                     case "S":
                         boardPosition = "E5";
+                        break;
                 }
-                break;
             case "E3":
                 System.out.println("\nIt's empty. Keep exploring... [W: Up] [A: Left] [D: Right]");
-                String direction = playerInput.next();
+                direction = playerInput.next();
 
                 switch(direction.toUpperCase()) {
                     case "W":
@@ -848,10 +852,11 @@ public class AdventureGame {
                         break;
                     case "D":
                         boardPosition = "E4";
-                break;
+                        break;
+                }
             case "B1":
                 System.out.println("\nIt's empty. Keep exploring... [W: Up] [S: Down] [D: Right]");
-                String direction = playerInput.next();
+                direction = playerInput.next();
 
                 switch(direction.toUpperCase()) {
                     case "W":
@@ -862,7 +867,8 @@ public class AdventureGame {
                         break;
                     case "D":
                         boardPosition = "B2";
-                break;
+                        break;
+                }
         }
     }
 
